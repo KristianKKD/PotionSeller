@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c71dfd17bcb24ca1a8438559fd81b, type: 3}
+  m_Name: Bat Wing
+  m_EditorClassIdentifier: 
+  propertiesApplied:
+  - {fileID: 11400000, guid: 79f12e04bf8bf404cab95d624e27c49f, type: 2}
+  - {fileID: 11400000, guid: 4a68d380cac98c74c9e52d5bc21d2c01, type: 2}
+  type: 1
+  text: Add Bat Wing

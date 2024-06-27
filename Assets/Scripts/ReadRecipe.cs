@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-
+using TMPro;
 
 public class Recipe {
     public List<Node> nodes = new List<Node>();
@@ -10,37 +11,58 @@ public class Recipe {
 
 public class ReadRecipe : MonoBehaviour {
 
-    int[,] idGrid;
+    public GameObject page;
 
-    public void OutputRecipe(Potion pot) {
-        int x = 5;
-        int y = 5;
-        Read(pot, 0, x, y);
+    public int dimensions = 20;
+
+    public bool a = false;
+    public Potion testPotion;
+
+    private void Awake() {
+        //OutputRecipe(testPotion);
     }
 
-    void Read(Potion pot, int stepStartIndex, int x, int y) { //if there are > 1 conditions, the branches will smash
-        for (int stepIndex = stepStartIndex; stepIndex < pot.steps.Count; stepIndex++) {
-            Step s = pot.steps[stepIndex];
-
-            idGrid[x, y++] = stepIndex; //save the node
-
-            if (s.type == StepType.Condition) {
-                //remember the condition position
-                int currentPosX = x;
-                int currentPosY = y;
-
-                Read(pot, stepIndex + 1, currentPosX - 1, currentPosY); //left side of the condition
-
-                //find the seperation point between the condition
-                int nextTerminator = 0;
-                for (int j = stepIndex + 1; j < pot.steps.Count && nextTerminator == 0; j++) {
-                    if (pot.steps[j].type == StepType.Terminator)
-                        nextTerminator = j;
-                }
-
-                Read(pot, nextTerminator + 1, currentPosX + 1, currentPosY); //right side of the condition
-            }
+    private void Update() {
+        if (a) {
+            a = false;
+            OutputRecipe(testPotion);
         }
     }
 
+    public void OutputRecipe(Potion pot) {
+        Read(pot, 0, 0, 0);
+    }
+
+    void Read(Potion pot, int potStepStartIndex, int currentX, int currentY) { //if there are > 1 conditions, the branches will smash
+        for (int stepIndex = potStepStartIndex; stepIndex < pot.steps.Count; stepIndex++) {
+            Step s = pot.steps[stepIndex];
+
+            GameObject pageSlot = page.transform.GetChild(currentX + currentY++ * dimensions).gameObject;
+            Debug.Log(currentX.ToString() + ", " + currentY.ToString() + ", " + pageSlot.name + ", " + s.text);
+            pageSlot.GetComponent<TMP_Text>().text = s.text;
+
+            if (s.type == StepType.Condition) {
+                Read(pot, stepIndex + 1, currentX, currentY); //left side of the condition
+
+                int leftTerminator = NextTerminator(pot, stepIndex);
+
+                Read(pot, leftTerminator + 1, currentX + 1, currentY); //right side of the condition
+
+                stepIndex = NextTerminator(pot, leftTerminator + 1);
+            }
+
+            if (s.type == StepType.Terminator)
+                return;
+        }
+    }
+
+    int NextTerminator(Potion pot, int startIndex) {
+        //find the seperation point between the condition
+        for (int secondaryIndex = startIndex + 1; secondaryIndex < pot.steps.Count; secondaryIndex++) {
+            if (pot.steps[secondaryIndex].type == StepType.Terminator)
+                return secondaryIndex;
+        }
+
+        return pot.steps.Count - 1;
+    }
 }
