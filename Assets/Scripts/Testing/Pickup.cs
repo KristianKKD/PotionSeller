@@ -32,6 +32,7 @@ public class Pickup : MonoBehaviour {
         if (heldObject == null)
             return;
 
+        heldObject.GetComponent<Collider>().enabled = true;
         heldObject.GetComponent<Rigidbody>().isKinematic = false;
         heldObject = null;
     }
@@ -39,5 +40,6 @@ public class Pickup : MonoBehaviour {
     public void Grab(Rigidbody objRB) {
         heldObject = objRB.gameObject;
         objRB.isKinematic = true;
+        objRB.gameObject.GetComponent<Collider>().enabled = false;
     }
 }

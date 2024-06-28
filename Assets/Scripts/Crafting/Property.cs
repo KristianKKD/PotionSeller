@@ -4,5 +4,5 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Property", menuName = "Crafting/Property", order = 0)]
 public class Property : ScriptableObject {
-    public string value;
+    public int value = 1;
 }

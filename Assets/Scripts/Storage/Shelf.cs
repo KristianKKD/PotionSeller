@@ -1,31 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Shelf : MonoBehaviour {
 
     public Step ingredient;
+    public TMP_Text text;
 
     int quantityHeld = 10;
 
-    References r;
-    Pickup p;
-    GameObject ingredientPrefab;
 
     private void Awake() {
-        r = FindObjectOfType<References>();
-        ingredientPrefab = r.templateIngredientPrefab.gameObject;
+        if (ingredient != null)
+            text.text = ingredient.name;
     }
 
     public void Interact() {
         if (quantityHeld <= 0)
             return;
-        if (p == null)
-            p = r.p;
 
-        GameObject go = Instantiate(ingredientPrefab);
-        go.GetComponent<Ingredient>().ingredientStep = ingredient;
-        p.Grab(go.GetComponent<Rigidbody>());
+        GameObject go = Instantiate(References.r.templateIngredientPrefab, References.r.itemSpawnParent);
+        go.GetComponent<Ingredient>().ingredientStep = ingredient; //temp (ingredients should have their own prefabs each)
+        References.r.p.Grab(go.GetComponent<Rigidbody>());
         quantityHeld--;
     }
 

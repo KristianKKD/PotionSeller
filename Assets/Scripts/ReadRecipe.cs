@@ -34,8 +34,8 @@ public class ReadRecipe : MonoBehaviour {
     }
 
     void Read(Potion pot, int potStepStartIndex, int currentX, int currentY) { //if there are > 1 conditions, the branches will smash
-        for (int stepIndex = potStepStartIndex; stepIndex < pot.steps.Count; stepIndex++) {
-            Step s = pot.steps[stepIndex];
+        for (int stepIndex = potStepStartIndex; stepIndex < pot.recommendedSteps.Count; stepIndex++) {
+            Step s = pot.recommendedSteps[stepIndex];
 
             GameObject pageSlot = page.transform.GetChild(currentX + currentY++ * dimensions).gameObject;
             Debug.Log(currentX.ToString() + ", " + currentY.ToString() + ", " + pageSlot.name + ", " + s.text);
@@ -58,11 +58,11 @@ public class ReadRecipe : MonoBehaviour {
 
     int NextTerminator(Potion pot, int startIndex) {
         //find the seperation point between the condition
-        for (int secondaryIndex = startIndex + 1; secondaryIndex < pot.steps.Count; secondaryIndex++) {
-            if (pot.steps[secondaryIndex].type == StepType.Terminator)
+        for (int secondaryIndex = startIndex + 1; secondaryIndex < pot.recommendedSteps.Count; secondaryIndex++) {
+            if (pot.recommendedSteps[secondaryIndex].type == StepType.Terminator)
                 return secondaryIndex;
         }
 
-        return pot.steps.Count - 1;
+        return pot.recommendedSteps.Count - 1;
     }
 }

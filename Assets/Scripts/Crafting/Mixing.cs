@@ -6,61 +6,46 @@ using UnityEngine;
 
 public class Mixing : MonoBehaviour {
 
-    public List<Potion> availableRecipes = new List<Potion>();
-
     [SerializeField]
-    List<Step> currentRecipe = new List<Step>();
-
+    List<Step> currentRecipeDisplay = new List<Step>();
     [SerializeField]
-    List<Property> recipeProperties = new List<Property>();
-
+    List<Property> recipePropertiesDisplay = new List<Property>();
+    
     public Potion currentOutput;
 
-    public void AddToMix(GameObject add) {
-        Step s = add.GetComponent<Ingredient>().ingredientStep;
-        currentRecipe.Add(s);
+    public void AddToMix(Step addedStep) {
+        currentOutput.AddStep(addedStep);
 
-        for (int i = 0; i < s.propertiesApplied.Count; i++)
-            recipeProperties.Add(s.propertiesApplied[i]);
+        recipePropertiesDisplay = currentOutput.currentProperties;
+        currentRecipeDisplay = currentOutput.currentSteps;
 
-        //update properties
         //change colour
-        Debug.Log("Added " + s.name);
+        Debug.Log("Added " + addedStep.name);
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.P)) {
-            Potion output = OutputMix();
-            Debug.Log("Outputted: " + output.name);
-        }
-    }
+    public void OutputMix(Potion emptyPotion) { 
+        emptyPotion.currentProperties = recipePropertiesDisplay;
+        emptyPotion.currentSteps = currentRecipeDisplay;
+        emptyPotion.gameObject.name = "Custom Potion";
 
-    public Potion OutputMix() { //find a match if there is one
-        Potion output = References.r.customPotion;
+        Debug.Log("Potion applied!");
+        Debug.Log(emptyPotion.currentProperties[0].name);
 
-        for (int i = 0; i < availableRecipes.Count; i++) {
-
-            bool match = false;
-            for (int j = 0; j < currentRecipe.Count; j++) { //compare every step of every recipe to see if they are the same
-                if (availableRecipes[i].steps[j] != currentRecipe[j]) { //if the step is different, this is not the same recipe
-                    match = false;
-                    break;
-                }
-                match = true; //this recipe is the same so far
-            }
-
-            if (match)
-                output = availableRecipes[i];
-        }
-
-        currentOutput = References.r.basePotion;
-        recipeProperties.Clear();
-        currentRecipe.Clear();
-        return output;
+        //change colour
+        recipePropertiesDisplay.Clear();
+        currentRecipeDisplay.Clear();
+        currentOutput = null;
     }
 
     private void OnTriggerEnter(Collider other) {
-        AddToMix(other.gameObject);
-        Destroy(other.gameObject);
+        Ingredient i = other.GetComponent<Ingredient>();
+        Potion prefab = other.GetComponent<Potion>();
+
+        if (i != null) {
+            AddToMix(i.ingredientStep);
+            Destroy(other.gameObject); //destroy ingredients upon use
+        } else if (prefab != null && prefab.IsEmpty() && currentOutput.currentSteps.Count > 0)
+            OutputMix(prefab);
+
     }
 }

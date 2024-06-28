@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2e2e9f55480254189a1d98260ec6c3, type: 3}
   m_Name: Tutorial
   m_EditorClassIdentifier: 
-  description: 
+  title: Warm Welcome
+  description: Please give me a warmth potion for the upcoming cold winter.
   rewards: []
   deliverables:
-  - {fileID: 11400000, guid: 21f24161b087cf9429cdf5207a7e0232, type: 2}
+  - {fileID: 11400000, guid: 9e3955fcb0d060b4083fb19872413cab, type: 2}
   payout: 1000

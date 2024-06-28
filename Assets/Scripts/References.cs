@@ -11,8 +11,9 @@ public class References : MonoBehaviour {
 
     public GameObject templateIngredientPrefab;
 
-    public Potion basePotion;
-    public Potion customPotion;
+    public GameObject questPagePrefab;
+
+    public Transform itemSpawnParent;
 
     private void Awake() {
         p = player.GetComponentInChildren<Pickup>();

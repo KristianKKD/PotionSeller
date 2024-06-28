@@ -15,5 +15,6 @@ MonoBehaviour:
   propertiesApplied:
   - {fileID: 11400000, guid: 8e2b0a45f92377a4fbf4afaff0f2f768, type: 2}
   - {fileID: 11400000, guid: f818b938c5a5ea243820399043abf555, type: 2}
+  - {fileID: 11400000, guid: 7fef733a8d3b51f4c8ab65f8c67d7ff1, type: 2}
   type: 1
   text: Add Charcoal
