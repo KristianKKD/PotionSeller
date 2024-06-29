@@ -23,6 +23,7 @@ public class Shelf : MonoBehaviour {
         GameObject go = Instantiate(References.r.templateIngredientPrefab, References.r.itemSpawnParent);
         go.GetComponent<Ingredient>().ingredientStep = ingredient; //temp (ingredients should have their own prefabs each)
         References.r.p.Grab(go.GetComponent<Rigidbody>());
+        go.GetComponent<Renderer>().material.color = ingredient.colourMix;
         quantityHeld--;
     }
 

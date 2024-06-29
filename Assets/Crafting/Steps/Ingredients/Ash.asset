@@ -20,3 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7fef733a8d3b51f4c8ab65f8c67d7ff1, type: 2}
   type: 1
   text: Add Ash
+  colourMix: {r: 0.12156863, g: 0, b: 0, a: 0}

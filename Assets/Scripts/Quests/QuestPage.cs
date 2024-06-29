@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class QuestPage : MonoBehaviour {
 
-    Quest q;
+    public Quest q;
 
     public TMP_Text title;
     public TMP_Text conditions;

@@ -18,7 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f818b938c5a5ea243820399043abf555, type: 2}
   unwantedProperties:
   - {fileID: 11400000, guid: f9cdca311d5b5864da0cfa76e6ebe736, type: 2}
-  - {fileID: 11400000, guid: f6a8a4c75425f174b8f216bdcb9a7a92, type: 2}
   - {fileID: 11400000, guid: 1800d4b5fc30cd44b9c8f2b7a98e44ac, type: 2}
   recommendedSteps:
   - {fileID: 11400000, guid: af6365e5dfba20249ac241b9eac10327, type: 2}

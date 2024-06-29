@@ -7,34 +7,44 @@ using UnityEngine;
 public class Mixing : MonoBehaviour {
 
     [SerializeField]
-    List<Step> currentRecipeDisplay = new List<Step>();
+    List<Step> currentRecipe = new List<Step>();
     [SerializeField]
-    List<Property> recipePropertiesDisplay = new List<Property>();
+    List<Property> currentRecipeProperties = new List<Property>();
     
     public Potion currentOutput;
+
+    public GameObject potionMixIndicator;
 
     public void AddToMix(Step addedStep) {
         currentOutput.AddStep(addedStep);
 
-        recipePropertiesDisplay = currentOutput.currentProperties;
-        currentRecipeDisplay = currentOutput.currentSteps;
+        currentRecipeProperties = currentOutput.currentProperties;
+        currentRecipe = currentOutput.currentSteps;
 
-        //change colour
+        Color c = Color.black;
+        for (int i = 0; i < currentRecipe.Count; i++)
+            c += currentRecipe[i].colourMix;
+        c /= currentRecipe.Count; //average colour
+
+        potionMixIndicator.SetActive(true);
+        potionMixIndicator.GetComponent<Renderer>().material.color = c;
+
         Debug.Log("Added " + addedStep.name);
     }
 
-    public void OutputMix(Potion emptyPotion) { 
-        emptyPotion.currentProperties = recipePropertiesDisplay;
-        emptyPotion.currentSteps = currentRecipeDisplay;
-        emptyPotion.gameObject.name = "Custom Potion";
+    public void OutputMix(GameObject emptyPotion) {
+        Potion p = emptyPotion.GetComponent<Potion>();
+        p.Copy(currentOutput);
+        emptyPotion.GetComponent<Renderer>().material.color = potionMixIndicator.GetComponent<Renderer>().material.color;
+        emptyPotion.name = "Custom Potion";
 
         Debug.Log("Potion applied!");
-        Debug.Log(emptyPotion.currentProperties[0].name);
 
-        //change colour
-        recipePropertiesDisplay.Clear();
-        currentRecipeDisplay.Clear();
-        currentOutput = null;
+        potionMixIndicator.SetActive(false);
+        currentRecipeProperties.Clear();
+        currentRecipe.Clear();
+        currentOutput.currentSteps.Clear();
+        currentOutput.currentProperties.Clear();
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -44,8 +54,7 @@ public class Mixing : MonoBehaviour {
         if (i != null) {
             AddToMix(i.ingredientStep);
             Destroy(other.gameObject); //destroy ingredients upon use
-        } else if (prefab != null && prefab.IsEmpty() && currentOutput.currentSteps.Count > 0)
-            OutputMix(prefab);
-
+        } else if (prefab && prefab.IsEmpty() && currentRecipe.Count > 0)
+            OutputMix(other.gameObject);
     }
 }

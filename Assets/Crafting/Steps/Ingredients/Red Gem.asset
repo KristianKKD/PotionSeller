@@ -18,3 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f6a8a4c75425f174b8f216bdcb9a7a92, type: 2}
   type: 1
   text: Add Red Gem
+  colourMix: {r: 0.6509434, g: 0.15045391, b: 0.15045391, a: 0}

@@ -19,6 +19,8 @@ public class Step : ScriptableObject {
     public string text;
     public StepInteraction interaction;
 
+    public Color colourMix;
+
     public bool Possible(List<Property> currentProperties) { //can this step be applied
         if (interaction != null)
             return interaction.ActivateInteraction(currentProperties, null) != null;

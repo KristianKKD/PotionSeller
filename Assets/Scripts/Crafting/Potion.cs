@@ -26,6 +26,15 @@ public class Potion : MonoBehaviour {
     public bool IsEmpty() {
         return currentSteps.Count == 0;
     }
+
+    public void Copy(Potion other) {
+        currentProperties.Clear();
+        currentSteps.Clear();
+        for (int i = 0; i < other.currentProperties.Count; i++)
+            currentProperties.Add(other.currentProperties[i]);
+        for (int i = 0; i < other.currentSteps.Count; i++)
+            currentSteps.Add(other.currentSteps[i]);
+    }
 }
 
 

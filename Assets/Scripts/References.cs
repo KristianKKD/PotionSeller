@@ -8,9 +8,9 @@ public class References : MonoBehaviour {
 
     public GameObject player;
     public Pickup p;
+    public QuestManager q;
 
     public GameObject templateIngredientPrefab;
-
     public GameObject questPagePrefab;
 
     public Transform itemSpawnParent;
@@ -18,6 +18,7 @@ public class References : MonoBehaviour {
     private void Awake() {
         p = player.GetComponentInChildren<Pickup>();
         r = this;
+        q = GetComponent<QuestManager>();
     }
 
 }
