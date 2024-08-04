@@ -11,14 +11,17 @@ public class TestingMovement : MonoBehaviour {
     public float frictionMovingMultiplier = 0.5f; //friction applied harder when we aren't trying to move
     public float acceleration = 7;
     public float maxSpeed = 7;
+    public bool sprinting = false;
 
     void Update() {
         inpX = Input.GetAxisRaw("Horizontal"); //get the axis movement (left/right and up/down)
         inpY = Input.GetAxisRaw("Vertical");
+        sprinting = Input.GetKey(KeyCode.LeftShift);
     }
 
     private void FixedUpdate() {
         Vector3 frictionVec = new Vector3(-rb.velocity.x, 0, -rb.velocity.z) * friction * ((Mathf.Abs(inpX) > 0.1 || Mathf.Abs(inpY) > 0.1) ? frictionMovingMultiplier : 1); //attach friction depending on current velocity
+        frictionVec *= ((sprinting) ? 0.5f : 1f);
 
         Vector3 leftright = HeadRotation() * Vector3.right * inpX * acceleration;
         Vector3 forwardback = HeadRotation() * Vector3.forward * inpY * acceleration;

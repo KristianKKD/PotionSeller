@@ -9,16 +9,22 @@ public class References : MonoBehaviour {
     public GameObject player;
     public Pickup p;
     public QuestManager q;
+    public ReadRecipe playerTracking;
+    public PlayerUnlocks playerUnlocks;
+    public IngredientDisplay id;
 
     public GameObject templateIngredientPrefab;
     public GameObject questPagePrefab;
 
     public Transform itemSpawnParent;
 
+    public Step bottle;
+
     private void Awake() {
         p = player.GetComponentInChildren<Pickup>();
         r = this;
         q = GetComponent<QuestManager>();
+        playerUnlocks = GetComponent<PlayerUnlocks>();
     }
 
 }

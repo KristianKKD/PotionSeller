@@ -16,4 +16,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: da03ace38192fdf4b993cb60ef5ca518, type: 2}
   - {fileID: 11400000, guid: 3c397292d210bdb47922170a1a6f2d11, type: 2}
   type: 1
-  text: Add Distilled Water
+  text: Add Water
+  colourMix: {r: 0, g: 0, b: 0, a: 0}

@@ -16,18 +16,12 @@ public class Mixing : MonoBehaviour {
     public GameObject potionMixIndicator;
 
     public void AddToMix(Step addedStep) {
-        currentOutput.AddStep(addedStep);
+        currentOutput.AddStep(addedStep, true);
 
         currentRecipeProperties = currentOutput.currentProperties;
         currentRecipe = currentOutput.currentSteps;
 
-        Color c = Color.black;
-        for (int i = 0; i < currentRecipe.Count; i++)
-            c += currentRecipe[i].colourMix;
-        c /= currentRecipe.Count; //average colour
-
-        potionMixIndicator.SetActive(true);
-        potionMixIndicator.GetComponent<Renderer>().material.color = c;
+        References.r.playerTracking.UpdateUserPotion(currentOutput);
 
         Debug.Log("Added " + addedStep.name);
     }
@@ -35,7 +29,6 @@ public class Mixing : MonoBehaviour {
     public void OutputMix(GameObject emptyPotion) {
         Potion p = emptyPotion.GetComponent<Potion>();
         p.Copy(currentOutput);
-        emptyPotion.GetComponent<Renderer>().material.color = potionMixIndicator.GetComponent<Renderer>().material.color;
         emptyPotion.name = "Custom Potion";
 
         Debug.Log("Potion applied!");
@@ -43,15 +36,16 @@ public class Mixing : MonoBehaviour {
         potionMixIndicator.SetActive(false);
         currentRecipeProperties.Clear();
         currentRecipe.Clear();
-        currentOutput.currentSteps.Clear();
-        currentOutput.currentProperties.Clear();
+
+        currentOutput.Reset();
+        References.r.playerTracking.ClearRecipe();
     }
 
     private void OnTriggerEnter(Collider other) {
         Ingredient i = other.GetComponent<Ingredient>();
         Potion prefab = other.GetComponent<Potion>();
 
-        if (i != null) {
+        if (i != null && i.ingredientStep != References.r.bottle) {
             AddToMix(i.ingredientStep);
             Destroy(other.gameObject); //destroy ingredients upon use
         } else if (prefab && prefab.IsEmpty() && currentRecipe.Count > 0)

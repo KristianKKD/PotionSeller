@@ -7,5 +7,4 @@ public class PlayerUnlocks : MonoBehaviour {
     public int money = 0;
 
     public List<Quest> availableQuests = new List<Quest>();
-
 }

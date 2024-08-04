@@ -56,14 +56,26 @@ public class QuestManager : MonoBehaviour {
             for (int requiredIndex = 0; requiredIndex < q.deliverables.Count; requiredIndex++) { //find a relevant quest page
                 Potion requiredPotion = q.deliverables[requiredIndex];
 
-                bool notMatch = false;
                 foreach (GameObject g in deliveredItems) {
+                    bool notMatch = false;
+
                     Potion deliveredPot = g.GetComponent<Potion>();
                     if (deliveredPot) {
                         for (int propIndex = 0; propIndex < requiredPotion.necessaryProperties.Count && !notMatch; propIndex++) { //check for all the desired properties
-                            if (!deliveredPot.currentProperties.Contains(requiredPotion.necessaryProperties[propIndex])) {
+                            
+                            int requiredCount = 0; //may need higher concentration of property
+                            for (int i = 0; i < requiredPotion.necessaryProperties.Count; i++)
+                                if (requiredPotion.necessaryProperties[i] == requiredPotion.necessaryProperties[propIndex])
+                                    requiredCount++;
+
+                            int foundCount = 0;
+                            for (int i = 0; i < deliveredPot.currentProperties.Count; i++)
+                                if (deliveredPot.currentProperties[i] == requiredPotion.necessaryProperties[propIndex])
+                                    foundCount++;
+
+                            if (foundCount < requiredCount) {
                                 notMatch = true;
-                                Debug.Log("Missing " + requiredPotion.necessaryProperties[propIndex]);
+                                Debug.Log("Missing " + requiredPotion.necessaryProperties[propIndex] + " x" + requiredCount.ToString() + ", has: " + foundCount.ToString());
                             }
                         }
                         for (int propIndex = 0; propIndex < requiredPotion.unwantedProperties.Count && !notMatch; propIndex++) { //check for bad properties
@@ -84,19 +96,33 @@ public class QuestManager : MonoBehaviour {
 
             if (foundItems.Count == q.deliverables.Count) {
                 CompleteQuest(q);
-                for (int i = 0; i < foundItems.Count; i++)
-                    Destroy(foundItems[foundItems.Count - 1]);
+                for (int i = 0; i < foundItems.Count; i++) {
+                    deliveredItems.Remove(foundItems[i]);
+                    Destroy(foundItems[foundItems.Count - 1].gameObject);
+                }
                 questsToRemove.Add(qGo);
             } else
                 Debug.Log("Missing " + (q.deliverables.Count - foundItems.Count).ToString());
         }
 
-        for (int i = 0; i < questsToRemove.Count; i++)
+        for (int i = 0; i < questsToRemove.Count; i++) {
+            Destroy(deliveredQuests[i].gameObject);
             deliveredQuests.Remove(deliveredQuests[i]);
+        }
     }
 
     void CompleteQuest(Quest q) {
         Debug.Log("Completed " + q.title);
+        References.r.playerUnlocks.money += q.payout;
+
+        for (int i = 0; i < q.rewards.Count; i++) {
+            Reward r = q.rewards[i];
+            for (int j = 0; j < r.quantity; j++) {
+                GameObject go = Instantiate(q.rewards[i].prefab, References.r.itemSpawnParent);
+                go.transform.position = questSpawnPoint.position;
+            }
+        }
+
         currentActive.Remove(q);
         //give player rewards
     }

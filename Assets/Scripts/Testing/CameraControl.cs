@@ -24,6 +24,9 @@ public class HeadRotate : MonoBehaviour {
     }
 
     private void Update() {
+        if (References.r.p.rotating)
+            return;
+
         float inpX = Input.GetAxis("Mouse X") * camSens * Time.deltaTime;
         float inpY = Input.GetAxis("Mouse Y") * camSens * Time.deltaTime;
 

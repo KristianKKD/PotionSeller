@@ -5,4 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Reward", menuName = "Quests/Reward", order = 1)]
 public class Reward : ScriptableObject {
     public int quantity;
+    public GameObject prefab;
 }

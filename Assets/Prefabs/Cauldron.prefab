@@ -38,7 +38,7 @@ Transform:
   - {fileID: 5433397504458981179}
   - {fileID: 8087284554270919080}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3663498903991885861
 BoxCollider:
@@ -693,6 +693,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 678476587980287917}
     m_Modifications:
+    - target: {fileID: 422995840802020293, guid: 7d9a8e9749356c940b15dd76e659ab47, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1635212521064372945, guid: 7d9a8e9749356c940b15dd76e659ab47, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2771459124360771123, guid: 7d9a8e9749356c940b15dd76e659ab47, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3577413580825324783, guid: 7d9a8e9749356c940b15dd76e659ab47, type: 3}
       propertyPath: m_Name
       value: CauldronPot
@@ -753,11 +765,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6987818041399394707, guid: 7d9a8e9749356c940b15dd76e659ab47, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169094224123473487, guid: 7d9a8e9749356c940b15dd76e659ab47, type: 3}
+      propertyPath: contentsIndicator
+      value: 
+      objectReference: {fileID: 6432284021970236389}
     m_RemovedComponents:
     - {fileID: 4756864987284115112, guid: 7d9a8e9749356c940b15dd76e659ab47, type: 3}
     - {fileID: 8514738165537151505, guid: 7d9a8e9749356c940b15dd76e659ab47, type: 3}
     - {fileID: 1017202989544815097, guid: 7d9a8e9749356c940b15dd76e659ab47, type: 3}
     - {fileID: 8739514372699798828, guid: 7d9a8e9749356c940b15dd76e659ab47, type: 3}
+    - {fileID: 7625877590139948330, guid: 7d9a8e9749356c940b15dd76e659ab47, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

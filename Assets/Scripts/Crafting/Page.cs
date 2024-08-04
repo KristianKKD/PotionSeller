@@ -5,14 +5,12 @@ using UnityEngine;
 public class Page : MonoBehaviour { //place on a panel with a grid layout group
 
     public GameObject cell;
-    public int cellsWidth = 20;
-    public int cellsHeight = 20;
 
-    private void Awake() {
-        for (int y = 0; y < cellsHeight; y++) {
-            for (int x = 0; x < cellsWidth; x++) {
+    public void Spawn(int xDim, int yDim) {
+        for (int y = 0; y < yDim; y++) {
+            for (int x = 0; x < xDim; x++) {
                 GameObject go = Instantiate(cell, transform);
-                go.name = (x + y * cellsHeight).ToString();
+                go.name = (x + y * yDim).ToString();
             }
         }
     }

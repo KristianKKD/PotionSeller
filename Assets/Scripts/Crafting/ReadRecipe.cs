@@ -5,40 +5,46 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using TMPro;
 
-public class Recipe {
-    public List<Node> nodes = new List<Node>();
-}
-
 public class ReadRecipe : MonoBehaviour {
 
-    public GameObject page;
+    public Page myPage;
 
-    public int dimensions = 20;
+    public int xDim = 5;
+    public int yDim = 5;
 
-    public bool a = false;
-    public Potion testPotion;
+    public bool tracking = false;
+
+    public Potion savedPotion;
 
     private void Awake() {
+        savedPotion = GetComponent<Potion>();
+        myPage.Spawn(xDim, yDim);
         //OutputRecipe(testPotion);
     }
 
-    private void Update() {
-        if (a) {
-            a = false;
-            OutputRecipe(testPotion);
-        }
+    public void UpdateUserPotion(Potion pot) {
+        if (tracking)
+            OutputRecipe(pot);
     }
 
     public void OutputRecipe(Potion pot) {
         Read(pot, 0, 0, 0);
     }
 
+    public void ClearRecipe() {
+        Debug.Log("Clearing user tracking!");
+        foreach (Transform child in myPage.transform)
+            child.GetComponent<TMP_Text>().text = "";
+    }
+
     void Read(Potion pot, int potStepStartIndex, int currentX, int currentY) { //if there are > 1 conditions, the branches will smash
         for (int stepIndex = potStepStartIndex; stepIndex < pot.recommendedSteps.Count; stepIndex++) {
-            Step s = pot.recommendedSteps[stepIndex];
+            Step s = pot.currentSteps[stepIndex];
 
-            GameObject pageSlot = page.transform.GetChild(currentX + currentY++ * dimensions).gameObject;
-            Debug.Log(currentX.ToString() + ", " + currentY.ToString() + ", " + pageSlot.name + ", " + s.text);
+            if (currentY + 1 > yDim)
+                return; //TODO
+
+            GameObject pageSlot = myPage.transform.GetChild(currentX + currentY++ * xDim).gameObject;
             pageSlot.GetComponent<TMP_Text>().text = s.text;
 
             if (s.type == StepType.Condition) {
@@ -54,6 +60,8 @@ public class ReadRecipe : MonoBehaviour {
             if (s.type == StepType.Terminator)
                 return;
         }
+
+        savedPotion.Copy(pot); 
     }
 
     int NextTerminator(Potion pot, int startIndex) {

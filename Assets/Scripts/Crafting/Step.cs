@@ -17,6 +17,7 @@ public class Step : ScriptableObject {
     public List<Property> propertiesApplied = new List<Property>();
     public StepType type = StepType.Statement;
     public string text;
+    public string description;
     public StepInteraction interaction;
 
     public Color colourMix;
