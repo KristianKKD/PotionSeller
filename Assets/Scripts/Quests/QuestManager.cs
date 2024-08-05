@@ -44,7 +44,10 @@ public class QuestManager : MonoBehaviour {
     }
 
     public void RemoveDelivery(GameObject go) {
-        deliveredItems.Add(go);
+        if (deliveredItems.Contains(go)) {
+            Debug.Log("Removed " + go.name);
+            deliveredItems.Remove(go);
+        }
     }
 
     public void TryCompleteQuest() {

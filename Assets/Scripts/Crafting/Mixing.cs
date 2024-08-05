@@ -23,6 +23,8 @@ public class Mixing : MonoBehaviour {
 
         References.r.playerTracking.UpdateUserPotion(currentOutput);
 
+        References.r.mm.AddedIngredient(addedStep); //player may be on the add ingredient quest
+
         Debug.Log("Added " + addedStep.name);
     }
 

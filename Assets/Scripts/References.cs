@@ -8,10 +8,11 @@ public class References : MonoBehaviour {
 
     public GameObject player;
     public Pickup p;
-    public QuestManager q;
+    public QuestManager qm;
     public ReadRecipe playerTracking;
     public PlayerUnlocks playerUnlocks;
     public IngredientDisplay id;
+    public MessageManager mm;
 
     public GameObject templateIngredientPrefab;
     public GameObject questPagePrefab;
@@ -23,8 +24,6 @@ public class References : MonoBehaviour {
     private void Awake() {
         p = player.GetComponentInChildren<Pickup>();
         r = this;
-        q = GetComponent<QuestManager>();
-        playerUnlocks = GetComponent<PlayerUnlocks>();
     }
 
 }

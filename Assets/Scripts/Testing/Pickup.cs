@@ -85,6 +85,9 @@ public class Pickup : MonoBehaviour {
 
         ToggleCollision(false);
 
+        if (References.r.qm.deliveredItems.Contains(heldObject))
+            References.r.qm.RemoveDelivery(heldObject);
+
         Ingredient i = heldObject.GetComponent<Ingredient>();
         if (i != null)
             References.r.id.UpdateDisplay(i.ingredientStep);
