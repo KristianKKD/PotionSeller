@@ -8,7 +8,7 @@ public enum PromptType {
     Cauldron,
 }
 
-[CreateAssetMenu(fileName = "Message", menuName = "Messages/Message", order = 0)]
+[CreateAssetMenu(fileName = "Message", menuName = "Message", order = 0)]
 public class Message : ScriptableObject {
 
     public string title;

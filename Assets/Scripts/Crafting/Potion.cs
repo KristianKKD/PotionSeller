@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Potion : MonoBehaviour {
@@ -14,6 +13,8 @@ public class Potion : MonoBehaviour {
 
     public GameObject contentsIndicator;
     public List<Step> savedRecipe;
+
+    public Color indicatorColor = Color.black;
 
     public Potion(List<Property> necessary = null, List<Property> unwanted = null, List<Step> recSteps = null) {
         necessaryProperties = necessary;
@@ -32,17 +33,19 @@ public class Potion : MonoBehaviour {
         UpdateColour();
     }
 
-    void UpdateColour() {
-        if (contentsIndicator == null)
-            return;
-
+    public void UpdateColour() {
         Color c = Color.black;
         for (int i = 0; i < currentSteps.Count; i++)
             c += currentSteps[i].colourMix;
         c /= currentSteps.Count; //average colour
+        c.a = 1;
+        indicatorColor = c;
+
+        if (contentsIndicator == null)
+            return;
 
         contentsIndicator.SetActive(true);
-        contentsIndicator.GetComponent<Renderer>().material.color = c;
+        contentsIndicator.GetComponent<Renderer>().material.color = indicatorColor;
     }
 
     public bool IsEmpty() {

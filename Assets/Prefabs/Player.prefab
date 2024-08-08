@@ -9439,6 +9439,8 @@ MonoBehaviour:
   rotationSpeed: 1
   followSpeed: 20
   rotating: 0
+  vecStartPos: {fileID: 0}
+  right: {fileID: 0}
 --- !u!1 &5516358612425977804
 GameObject:
   m_ObjectHideFlags: 0

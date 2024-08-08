@@ -52,6 +52,7 @@ using UnityEngine.EventSystems;
 
         if (m.prompt != null) {
             prompt.text = m.prompt.title;
+            prompt.fontSize = m.prompt.size;
             currentPromptType = m.nextPromptType;
 
             if (currentPromptType == PromptType.Cauldron && completedIngredientPrompt) { //already completed the mini-quest
@@ -71,7 +72,7 @@ using UnityEngine.EventSystems;
         if (index - 1 >= 0)
             backButton.SetActive(true);
 
-        EventSystem.current.SetSelectedGameObject(null);
+        //EventSystem.current.SetSelectedGameObject(null);
     }
 
     void SpawnTab(int index) {

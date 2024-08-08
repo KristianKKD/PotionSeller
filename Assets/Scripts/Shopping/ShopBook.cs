@@ -4,35 +4,44 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 public class ShopBook : MonoBehaviour {
-
 
     public GameObject ingredientsTab;
     public GameObject golemsTab;
 
-    public GameObject chefPage;
+    //prefabs
+    public Purchase basicGolem;
 
-    public TMP_Text money;
+    public GameObject purchaseButton;
+    public TMP_Text purchaseText;
+    public GameObject notEnoughMoney;
+    public TMP_Text notEnoughMoneyText;
+
+    public TMP_Text currentMoney;
 
     List<GameObject> tabs;
-    List<GameObject> pages;
+    public List<Purchase> pages;
 
     Button lastButton;
 
-    public bool hovering = false;
+    public GameObject buyPrefab;
+    public Step buyIngredient;
+    public int buyPrice;
 
     private void Awake() {
         tabs = new List<GameObject>() { ingredientsTab, golemsTab };
-        pages = new List<GameObject>() { chefPage };
+        pages = new List<Purchase>(GetComponentsInChildren<Purchase>());
         ResetTabs();
         ResetPages();
 
         GetComponent<Canvas>().worldCamera = Camera.main;
     }
 
-    private void Update() {
-        money.text = "Money\n$" + References.r.playerUnlocks.money.ToString();
+    private void FixedUpdate() {
+        currentMoney.text = "Money\n$" + References.r.pu.money.ToString();
     }
 
     void ResetTabs() {
@@ -41,8 +50,29 @@ public class ShopBook : MonoBehaviour {
     }
 
     void ResetPages() {
-        foreach (GameObject p in pages)
+        foreach (Purchase p in pages)
             p.gameObject.SetActive(false);
+        TogglePuchaseButton();
+    }
+
+    void TogglePuchaseButton() {
+        if (buyPrefab == null && buyIngredient == null) {
+            purchaseButton.SetActive(false);
+            notEnoughMoney.SetActive(false);
+            return;
+        }
+
+        if (References.r.pu.money >= buyPrice) {
+            notEnoughMoneyText.text = "Purchase ($" + buyPrice.ToString() + ")";
+
+            purchaseButton.SetActive(true);
+            notEnoughMoney.SetActive(false);
+        } else {
+            notEnoughMoneyText.text = "Not Enough Money ($" + buyPrice.ToString() + ")";
+
+            purchaseButton.SetActive(false);
+            notEnoughMoney.SetActive(true);
+        }
     }
 
     public void ChangeColour(Button b) {
@@ -63,6 +93,24 @@ public class ShopBook : MonoBehaviour {
         lastButton = b;
     }
 
+    public void ClickedPurchase() {
+        if (buyPrefab == null && buyIngredient == null) {
+            Debug.Log("PREFAB NULL");
+            return;
+        }
+        
+        References.r.pu.money -= buyPrice;
+
+        Debug.Log("Bought " + buyPrefab.name);
+
+        if (buyPrefab.GetComponent<GolemBase>() != null) {
+            GameObject go = Instantiate(buyPrefab, References.r.itemSpawnParent);
+            go.transform.position = Vector3.up;
+        } else if (buyPrefab == null && buyIngredient != null) {
+            References.r.c.AddShelf(buyIngredient, 10);
+        }
+    }
+
     public void ClickedIngredientsTab(Button b) {
         ResetTabs();
         ingredientsTab.SetActive(true);
@@ -75,10 +123,11 @@ public class ShopBook : MonoBehaviour {
         ChangeColour(b);
     }
 
-    public void ClickedChefPage(Button b) {
+    public void PressedPageTab(Button b, GameObject page) {
         ResetPages();
-        chefPage.SetActive(true);
+        page.gameObject.SetActive(true);
         ChangeColour(b);
+        TogglePuchaseButton();
     }
 
 }

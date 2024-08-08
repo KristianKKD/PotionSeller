@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 
 public class ReadRecipe : MonoBehaviour {
 
@@ -19,7 +19,6 @@ public class ReadRecipe : MonoBehaviour {
     private void Awake() {
         savedPotion = GetComponent<Potion>();
         myPage.Spawn(xDim, yDim);
-        //OutputRecipe(testPotion);
     }
 
     public void UpdateUserPotion(Potion pot) {
@@ -33,8 +32,14 @@ public class ReadRecipe : MonoBehaviour {
 
     public void ClearRecipe() {
         Debug.Log("Clearing user tracking!");
-        foreach (Transform child in myPage.transform)
-            child.GetComponent<TMP_Text>().text = "";
+        foreach (Transform child in myPage.transform) {
+            PageCell cell = child.GetComponent<PageCell>();
+            cell.text.text = "";
+            cell.forwardArrow.SetActive(false);
+            cell.loopArrow.SetActive(false);
+            cell.loopText.text = "";
+            cell.dotdot.SetActive(false);
+        }
     }
 
     void Read(Potion pot, int potStepStartIndex, int currentX, int currentY) { //if there are > 1 conditions, the branches will smash
@@ -44,8 +49,12 @@ public class ReadRecipe : MonoBehaviour {
             if (currentY + 1 > yDim)
                 return; //TODO
 
-            GameObject pageSlot = myPage.transform.GetChild(currentX + currentY++ * xDim).gameObject;
-            pageSlot.GetComponent<TMP_Text>().text = s.text;
+            PageCell cell = myPage.transform.GetChild(currentX + currentY++ * xDim).GetComponent<PageCell>();
+            cell.text.text = s.text;
+            if (stepIndex + 1 < pot.recommendedSteps.Count && currentY < yDim)
+                cell.forwardArrow.SetActive(true);
+            else if (currentY + 1 > yDim)
+                cell.dotdot.SetActive(true);
 
             if (s.type == StepType.Condition) {
                 Read(pot, stepIndex + 1, currentX, currentY); //left side of the condition

@@ -21,7 +21,8 @@ public class Mixing : MonoBehaviour {
         currentRecipeProperties = currentOutput.currentProperties;
         currentRecipe = currentOutput.currentSteps;
 
-        References.r.playerTracking.UpdateUserPotion(currentOutput);
+        References.r.pt.UpdateUserPotion(currentOutput);
+        References.r.pp.UpdateDisplay();
 
         References.r.mm.AddedIngredient(addedStep); //player may be on the add ingredient quest
 
@@ -40,7 +41,7 @@ public class Mixing : MonoBehaviour {
         currentRecipe.Clear();
 
         currentOutput.Reset();
-        References.r.playerTracking.ClearRecipe();
+        References.r.pt.ClearRecipe();
     }
 
     private void OnTriggerEnter(Collider other) {

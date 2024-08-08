@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f51c876fc627744d9f47e7c44d175cf, type: 3}
+  m_Name: Magic Void
+  m_EditorClassIdentifier: 
+  counters:
+  - {fileID: 11400000, guid: 57954febb7e57284389c11d5111a4801, type: 2}
+  - {fileID: 11400000, guid: 689c0e47c4c390c4982de3f19c15e3ea, type: 2}
+  - {fileID: 11400000, guid: f818b938c5a5ea243820399043abf555, type: 2}
+  - {fileID: 11400000, guid: 67e33f2939aa7a043a2473eddca37ab9, type: 2}
+  - {fileID: 11400000, guid: 15b92b86c315bc64e80ae03a95f44098, type: 2}
+  chances: []
+  chanceApplied: []

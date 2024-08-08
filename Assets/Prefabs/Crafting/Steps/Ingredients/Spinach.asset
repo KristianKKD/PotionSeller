@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c71dfd17bcb24ca1a8438559fd81b, type: 3}
+  m_Name: Spinach
+  m_EditorClassIdentifier: 
+  propertiesApplied:
+  - {fileID: 11400000, guid: db2d60bc4e3d8914ba30c2928f0bf447, type: 2}
+  - {fileID: 11400000, guid: e3861df51b63b0a46809edc85e787901, type: 2}
+  type: 1
+  text: Add Spinach
+  description: Spinach, a plant of vitality and power, once utilized correctly can
+    be used to give one the power of a hundred. Beloved by elves and warriors alike,
+    it can be used for a wide array of buffing brews, but beware, using it at the
+    wrong moment will nullify a connection to the arcane!
+  colourMix: {r: 0.07934874, g: 0.4433962, b: 0, a: 0}

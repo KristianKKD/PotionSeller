@@ -16,6 +16,10 @@ public class QuestManager : MonoBehaviour {
     public List<GameObject> deliveredQuests = new List<GameObject>();
 
     private void Awake() {
+        GiveQuest(questPool[0]); //tutorial quest
+    }
+
+    void RandomQuest() {
         for (int i = 0; i < targetQuestsAvailable; i++) {
             int randInt = Random.Range(0, questPool.Count);
             Quest selectedQuest = questPool[randInt];
@@ -26,6 +30,7 @@ public class QuestManager : MonoBehaviour {
     }
 
     void GiveQuest(Quest q) {
+        Debug.Log("Giving " + q.name);
         GameObject go = Instantiate(References.r.questPagePrefab, References.r.itemSpawnParent);
         go.transform.position = questSpawnPoint.position;
         go.GetComponent<QuestPage>().LoadQuest(q);
@@ -110,23 +115,35 @@ public class QuestManager : MonoBehaviour {
 
         for (int i = 0; i < questsToRemove.Count; i++) {
             Destroy(deliveredQuests[i].gameObject);
+            questPool.Remove(deliveredQuests[i].GetComponent<Quest>());
             deliveredQuests.Remove(deliveredQuests[i]);
         }
     }
 
     void CompleteQuest(Quest q) {
         Debug.Log("Completed " + q.title);
-        References.r.playerUnlocks.money += q.payout;
+        References.r.pu.money += q.payout;
 
         for (int i = 0; i < q.rewards.Count; i++) {
             Reward r = q.rewards[i];
-            for (int j = 0; j < r.quantity; j++) {
-                GameObject go = Instantiate(q.rewards[i].prefab, References.r.itemSpawnParent);
-                go.transform.position = questSpawnPoint.position;
-            }
+            if (r.rewardType == RewardType.Item)
+                References.r.c.AddShelf(r.itemPayout, r.itmeQuantity);
         }
 
+        RandomQuest(); //for every quest complete, give two more
+        if (currentActive.Count < 3 && questPool.Count > 0) //if it is reasonable to do so
+            RandomQuest();
+
+        /*
+            for (int i = 0; i < q.rewards.Count; i++) {
+                Reward r = q.rewards[i];
+                for (int j = 0; j < r.quantity; j++) {
+                    GameObject go = Instantiate(q.rewards[i].prefab, References.r.itemSpawnParent);
+                    go.transform.position = questSpawnPoint.position;
+                }
+            }
+        */
+
         currentActive.Remove(q);
-        //give player rewards
     }
 }

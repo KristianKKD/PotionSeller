@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c2e2e9f55480254189a1d98260ec6c3, type: 3}
+  m_Name: Leaping
+  m_EditorClassIdentifier: 
+  title: The Great Leap Feat
+  description: Brave alchemist, your talents are required to create a might leaping
+    potion. The kingdom's finest soldiers seek your elixir to soar over castle walls
+    to strike our foes down swiftly. May your concoction grant them the gift of extraordinary
+    leaps and unparalleled agility!
+  rewards: []
+  deliverables: []
+  payout: 0

@@ -27,7 +27,6 @@ public class GolemBase : MonoBehaviour {
     public bool grounded = true;
     public bool isPaused = false;
 
-
     private void Awake() {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
@@ -156,6 +155,8 @@ public class GolemBase : MonoBehaviour {
             agent.enabled = true;
             rb.isKinematic = true;
             grounded = true;
+
+            stateTarget = State.Idle;
 
             if (target != null && stateTarget == State.Ingredient || stateTarget == State.ExportingPotion)
                 agent.SetDestination(target.transform.position);

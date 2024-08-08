@@ -9,8 +9,4 @@ public class Quest : ScriptableObject {
     public List<Reward> rewards = new List<Reward>();
     public List<Potion> deliverables = new List<Potion>();
     public int payout;
-
-    public void CompleteQuest() {
-
-    }
 }
