@@ -25,14 +25,26 @@ using UnityEngine.EventSystems;
     public PromptType currentPromptType = PromptType.Next;
 
     bool completedIngredientPrompt = false;
+    public int completeQuestLevel = 0;
 
     private void Awake() {
         DisplayMessage(0);
     }
 
-    public void AddedIngredient(Step s) {
+    public void AddedIngredient() {
+        completedIngredientPrompt = true;
         if (currentPromptType == PromptType.Cauldron) {
-            completedIngredientPrompt = true;
+            prompt.text = messages[messageIndex].prompt.text; //secondary text in prompt
+            forwardButton.SetActive(true);
+        }
+    }
+
+    public void CompletedQuest(int questIndex) {
+        completeQuestLevel = Mathf.Max(questIndex, completeQuestLevel);
+
+        if ((currentPromptType == PromptType.Quest && completeQuestLevel > 0) ||
+                    (currentPromptType == PromptType.Quest2 && completeQuestLevel > 1) ||
+                    (currentPromptType == PromptType.Quest3 && completeQuestLevel > 2)) {
             prompt.text = messages[messageIndex].prompt.text; //secondary text in prompt
             forwardButton.SetActive(true);
         }
@@ -55,7 +67,10 @@ using UnityEngine.EventSystems;
             prompt.fontSize = m.prompt.size;
             currentPromptType = m.nextPromptType;
 
-            if (currentPromptType == PromptType.Cauldron && completedIngredientPrompt) { //already completed the mini-quest
+            if ((currentPromptType == PromptType.Cauldron && completedIngredientPrompt) ||
+                    (currentPromptType == PromptType.Quest && completeQuestLevel > 0) ||
+                    (currentPromptType == PromptType.Quest2 && completeQuestLevel > 1) ||
+                    (currentPromptType == PromptType.Quest3 && completeQuestLevel > 2)) { //already completed the mini-quest
                 currentPromptType = PromptType.Next;
                 prompt.text = m.prompt.text; //secondary text in prompt
             }

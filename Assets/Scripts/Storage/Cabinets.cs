@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Cabinets : MonoBehaviour {
 
-    public List<Shelf> shelves = new List<Shelf>();
+    List<Shelf> shelves;
+
+    private void Awake() {
+        shelves = new List<Shelf>(GetComponentsInChildren<Shelf>(true));
+    }
 
     public void AddShelf(Step st, int quantity) {
+        Debug.Log("Adding " + st.name + " shelf");
         foreach (Shelf shelf in shelves) {
-            if (shelf.ingredient = st) {
+            if (shelf.ingredient == st) {
                 shelf.quantityHeld += quantity;
+                break;
             } else if (shelf.ingredient == null) {
                 shelf.ingredient = st;
                 shelf.quantityHeld = quantity;

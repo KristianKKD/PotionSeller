@@ -24,7 +24,7 @@ public class Mixing : MonoBehaviour {
         References.r.pt.UpdateUserPotion(currentOutput);
         References.r.pp.UpdateDisplay();
 
-        References.r.mm.AddedIngredient(addedStep); //player may be on the add ingredient quest
+        References.r.mm.AddedIngredient(); //player may be on the add ingredient quest
 
         Debug.Log("Added " + addedStep.name);
     }
@@ -53,5 +53,10 @@ public class Mixing : MonoBehaviour {
             Destroy(other.gameObject); //destroy ingredients upon use
         } else if (prefab && prefab.IsEmpty() && currentRecipe.Count > 0)
             OutputMix(other.gameObject);
+        else if (prefab && !prefab.IsEmpty()) {
+            foreach (Step s in prefab.currentSteps)
+                AddToMix(s);
+            Destroy(other.gameObject);
+        }
     }
 }

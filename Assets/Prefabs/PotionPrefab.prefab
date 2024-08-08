@@ -121,7 +121,7 @@ Transform:
   - {fileID: 8391062721080457415}
   - {fileID: 536940744504456268}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8739514372699798828
 BoxCollider:
@@ -190,6 +190,7 @@ MonoBehaviour:
   currentProperties: []
   contentsIndicator: {fileID: 2100396899449997933}
   savedRecipe: []
+  indicatorColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &7625877590139948330
 MonoBehaviour:
   m_ObjectHideFlags: 0

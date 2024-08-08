@@ -18,5 +18,6 @@ MonoBehaviour:
     to strike our foes down swiftly. May your concoction grant them the gift of extraordinary
     leaps and unparalleled agility!
   rewards: []
-  deliverables: []
-  payout: 0
+  deliverables:
+  - {fileID: 11400000, guid: 21f24161b087cf9429cdf5207a7e0232, type: 2}
+  payout: 2000

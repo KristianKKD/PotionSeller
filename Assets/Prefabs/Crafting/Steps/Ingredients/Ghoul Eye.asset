@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Ghoul Eye
   m_EditorClassIdentifier: 
   propertiesApplied:
-  - {fileID: 11400000, guid: ccd24ecc8b3cac0469cb076fa18c5fbe, type: 2}
   - {fileID: 11400000, guid: 41abe49e7a6f29d4ca8a4bd9a9dd8e36, type: 2}
   - {fileID: 11400000, guid: 4a68d380cac98c74c9e52d5bc21d2c01, type: 2}
+  - {fileID: 11400000, guid: f9cdca311d5b5864da0cfa76e6ebe736, type: 2}
   type: 1
-  text: Add Ghoul Eye
+  text: Ghoul Eye
   description: This rare ingredient, harvested from a night-dwelling ghoul, is prized
-    for its ability to enhance potions with vision in the dark. Tastes disgusting,
-    but is stable enough for simple potions.
+    for its ability to enhance potions with vision in the dark. Tastes disgusting
+    and is poisonous without proper care, but is stable enough for simple potions.
   colourMix: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 0}

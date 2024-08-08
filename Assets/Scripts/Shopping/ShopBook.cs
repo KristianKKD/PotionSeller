@@ -33,7 +33,7 @@ public class ShopBook : MonoBehaviour {
 
     private void Awake() {
         tabs = new List<GameObject>() { ingredientsTab, golemsTab };
-        pages = new List<Purchase>(GetComponentsInChildren<Purchase>());
+        pages = new List<Purchase>(GetComponentsInChildren<Purchase>(true));
         ResetTabs();
         ResetPages();
 
@@ -52,10 +52,10 @@ public class ShopBook : MonoBehaviour {
     void ResetPages() {
         foreach (Purchase p in pages)
             p.gameObject.SetActive(false);
-        TogglePuchaseButton();
+        TogglePurchaseButton();
     }
 
-    void TogglePuchaseButton() {
+    public void TogglePurchaseButton() {
         if (buyPrefab == null && buyIngredient == null) {
             purchaseButton.SetActive(false);
             notEnoughMoney.SetActive(false);
@@ -63,7 +63,7 @@ public class ShopBook : MonoBehaviour {
         }
 
         if (References.r.pu.money >= buyPrice) {
-            notEnoughMoneyText.text = "Purchase ($" + buyPrice.ToString() + ")";
+            purchaseText.text = "Purchase ($" + buyPrice.ToString() + ")";
 
             purchaseButton.SetActive(true);
             notEnoughMoney.SetActive(false);
@@ -101,9 +101,7 @@ public class ShopBook : MonoBehaviour {
         
         References.r.pu.money -= buyPrice;
 
-        Debug.Log("Bought " + buyPrefab.name);
-
-        if (buyPrefab.GetComponent<GolemBase>() != null) {
+        if (buyPrefab != null && buyPrefab.GetComponent<GolemBase>() != null) {
             GameObject go = Instantiate(buyPrefab, References.r.itemSpawnParent);
             go.transform.position = Vector3.up;
         } else if (buyPrefab == null && buyIngredient != null) {
@@ -127,7 +125,7 @@ public class ShopBook : MonoBehaviour {
         ResetPages();
         page.gameObject.SetActive(true);
         ChangeColour(b);
-        TogglePuchaseButton();
+        TogglePurchaseButton();
     }
 
 }

@@ -6,6 +6,9 @@ public enum PromptType {
     Prompt,
     Next,
     Cauldron,
+    Quest,
+    Quest2,
+    Quest3,
 }
 
 [CreateAssetMenu(fileName = "Message", menuName = "Message", order = 0)]

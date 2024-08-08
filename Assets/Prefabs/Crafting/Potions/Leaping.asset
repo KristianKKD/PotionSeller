@@ -20,11 +20,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f9cdca311d5b5864da0cfa76e6ebe736, type: 2}
   - {fileID: 11400000, guid: 1800d4b5fc30cd44b9c8f2b7a98e44ac, type: 2}
   recommendedSteps:
-  - {fileID: 11400000, guid: af6365e5dfba20249ac241b9eac10327, type: 2}
-  - {fileID: 11400000, guid: 9e90dc8671b045a4fb89d1b8129a5f92, type: 2}
-  - {fileID: 11400000, guid: 83ed19a699f8c184192b7fc8adadc4c5, type: 2}
-  currentSteps: []
+  - {fileID: 11400000, guid: b7d68f8ad771f8d43a690e23048b8c1c, type: 2}
+  - {fileID: 11400000, guid: b7d68f8ad771f8d43a690e23048b8c1c, type: 2}
+  - {fileID: 11400000, guid: 7ed25c8cf8e62824f985019c89cadba1, type: 2}
+  currentSteps:
+  - {fileID: 11400000, guid: b7d68f8ad771f8d43a690e23048b8c1c, type: 2}
+  - {fileID: 11400000, guid: b7d68f8ad771f8d43a690e23048b8c1c, type: 2}
+  - {fileID: 11400000, guid: 7ed25c8cf8e62824f985019c89cadba1, type: 2}
   currentProperties: []
   contentsIndicator: {fileID: 0}
   savedRecipe: []
-  indicatorColor: {r: 0, g: 0, b: 0, a: 0}
+  indicatorColor: {r: 0.026449582, g: 0.14779873, b: 0, a: 1}

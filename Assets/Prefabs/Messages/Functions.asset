@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb92f217cd7e8bc43badfdcac6d80858, type: 3}
-  m_Name: Controls
+  m_Name: Functions
   m_EditorClassIdentifier: 
-  title: Controls
-  text: <color="yellow">VR:<color="white"><br>Left/Right Trigger = Interact<br>Left/Right
-    Grip = Pickup<br>Left Stick = Move<br>Right Stick = Quick turn<br><br><color="orange">PC<color="white"><br>LMB
-    = Interact/Rotate while picked up<br>RMB = Pickup<br>WASD = Move
-  size: 0.75
+  title: Functions
+  text: "As a recipe can be imagined as an application, we can also imagine it to
+    be a function.<br><br>A function is a block of code, or a set of instructions
+    which return a desired output once completed. <br><br>We use functions for easy
+    reuse, similar to loops. Unlike loops, functions can take parameters\u2014variables
+    that change how they work, but in our case, we won't be using parameters."
+  size: 0.8
   prompt: {fileID: 11400000, guid: 9c69a427ee241db48a06db519ae9e6b0, type: 2}
   nextPromptType: 1

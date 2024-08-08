@@ -20,8 +20,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f9cdca311d5b5864da0cfa76e6ebe736, type: 2}
   - {fileID: 11400000, guid: 1800d4b5fc30cd44b9c8f2b7a98e44ac, type: 2}
   recommendedSteps:
-  - {fileID: 11400000, guid: af6365e5dfba20249ac241b9eac10327, type: 2}
   - {fileID: 11400000, guid: 9974909e04afe9141b8b528ed99fc41b, type: 2}
   - {fileID: 11400000, guid: 83ed19a699f8c184192b7fc8adadc4c5, type: 2}
-  currentSteps: []
+  currentSteps:
+  - {fileID: 11400000, guid: 9974909e04afe9141b8b528ed99fc41b, type: 2}
+  - {fileID: 11400000, guid: 83ed19a699f8c184192b7fc8adadc4c5, type: 2}
   currentProperties: []
+  contentsIndicator: {fileID: 0}
+  savedRecipe: []
+  indicatorColor: {r: 0.38327536, g: 0.18253301, b: 0.2419752, a: 1}

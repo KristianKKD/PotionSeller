@@ -15,6 +15,8 @@ public class QuestManager : MonoBehaviour {
     public List<GameObject> deliveredItems = new List<GameObject>();
     public List<GameObject> deliveredQuests = new List<GameObject>();
 
+    int currentQuestIndex = 0;
+
     private void Awake() {
         GiveQuest(questPool[0]); //tutorial quest
     }
@@ -24,7 +26,6 @@ public class QuestManager : MonoBehaviour {
             int randInt = Random.Range(0, questPool.Count);
             Quest selectedQuest = questPool[randInt];
             currentActive.Add(selectedQuest);
-            questPool.Remove(selectedQuest);
             GiveQuest(selectedQuest);
         }
     }
@@ -114,15 +115,16 @@ public class QuestManager : MonoBehaviour {
         }
 
         for (int i = 0; i < questsToRemove.Count; i++) {
-            Destroy(deliveredQuests[i].gameObject);
-            questPool.Remove(deliveredQuests[i].GetComponent<Quest>());
             deliveredQuests.Remove(deliveredQuests[i]);
+            Destroy(questsToRemove[i].gameObject);
         }
     }
 
     void CompleteQuest(Quest q) {
         Debug.Log("Completed " + q.title);
         References.r.pu.money += q.payout;
+        References.r.sb.TogglePurchaseButton();
+        References.r.mm.CompletedQuest(++currentQuestIndex);
 
         for (int i = 0; i < q.rewards.Count; i++) {
             Reward r = q.rewards[i];
@@ -130,9 +132,16 @@ public class QuestManager : MonoBehaviour {
                 References.r.c.AddShelf(r.itemPayout, r.itmeQuantity);
         }
 
-        RandomQuest(); //for every quest complete, give two more
-        if (currentActive.Count < 3 && questPool.Count > 0) //if it is reasonable to do so
-            RandomQuest();
+        for (int i = 0; i < q.deliverables.Count; i++)
+            Instantiate(References.r.potionPrefab, References.r.respawnPotionParent);
+
+        if (currentQuestIndex < 3) //tutorial
+            GiveQuest(questPool[currentQuestIndex]);
+        else {
+            RandomQuest(); //for every quest complete, give two more
+            if (currentActive.Count < 3 && questPool.Count > 0) //if it is reasonable to do so
+                RandomQuest();
+        }
 
         /*
             for (int i = 0; i < q.rewards.Count; i++) {

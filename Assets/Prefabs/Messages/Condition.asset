@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb92f217cd7e8bc43badfdcac6d80858, type: 3}
+  m_Name: Condition
+  m_EditorClassIdentifier: 
+  title: Conditions
+  text: Finally, for our last <color="green">quest<color="white">, you will need
+    to consider that a required <color="yellow">ingredient<color="white"> contains
+    the forbidden property 'poison'! To remove this property, we will need to add
+    some extra logic, e.g. add another <color="yellow">ingredient<color="white">.
+    This can be imagined as the condition:<br>IF POISON:<br>    NEUTRALIZE
+  size: 0.9
+  prompt: {fileID: 11400000, guid: affcf388f09ad374b9a7592da7ff20ed, type: 2}
+  nextPromptType: 5

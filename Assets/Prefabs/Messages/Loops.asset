@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb92f217cd7e8bc43badfdcac6d80858, type: 3}
+  m_Name: Loops
+  m_EditorClassIdentifier: 
+  title: Loops
+  text: For this potion, you will need to use an <color="yellow">ingredient<color="white">
+    multiple times. Instead of listing the same <color="yellow">ingredient<color="white">
+    repeatedly in the recipe, we can use a loop to simplify the process by placing
+    the <color="yellow">ingredient<color="white"> directly after the previous one.<br><br>A
+    loop is a section of code that repeats a given number of times. This eliminates
+    the need to manually repeat the same line, making it especially useful when a
+    command needs to be repeated many times.
+  size: 0.8
+  prompt: {fileID: 11400000, guid: 89665f3d9352b9f429001bd3234e8b3c, type: 2}
+  nextPromptType: 4

@@ -17,6 +17,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8f83846b8b30729478605f6919f08f1b, type: 2}
   - {fileID: 11400000, guid: f6a8a4c75425f174b8f216bdcb9a7a92, type: 2}
   type: 1
-  text: Add Carrot Fae
+  text: Carrot Fae
   description: 
   colourMix: {r: 0, g: 0, b: 0, a: 0}

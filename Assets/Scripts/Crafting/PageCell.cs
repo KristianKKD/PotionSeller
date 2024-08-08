@@ -10,5 +10,6 @@ public class PageCell : MonoBehaviour {
     public GameObject loopArrow;
     public GameObject forwardArrow;
     public GameObject dotdot;
+    public GameObject continueArrow;
 
 }

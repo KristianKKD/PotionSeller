@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: da03ace38192fdf4b993cb60ef5ca518, type: 2}
   - {fileID: 11400000, guid: 3c397292d210bdb47922170a1a6f2d11, type: 2}
   type: 1
-  text: Add Water
+  text: Water
   description: A phial of crystal-clear distilled water, purified to perfection.
     This pristine liquid is devoid of impurities, shimmering with an almost ethereal
     clarity.

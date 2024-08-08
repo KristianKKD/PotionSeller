@@ -13,17 +13,13 @@ MonoBehaviour:
   m_Name: Night
   m_EditorClassIdentifier: 
   title: Cure for Darkness
-  description: Greetings fellow craftsworker!<br> A newly discovered cavern in the
-    nearby frost mountains beckons me with its mysterious depths and untold resources
-    for my new invention! Alas,  monstrous creatures lurk in the shadows, thwarting
-    my every step in the depths, the rascals!! I implore you, please, craft a potion
-    of night vision to fend off the darkness and reveal the what was once hidden!
-    As a side, please make sure the potion warms me, for the cold pierces even the
-    thickest of unicorn fur! <br>In return, I shall reward you with the powerful
-    crystals of frost I uncovered in the upper layers and a small sum of my adventure
-    fund!
+  description: Greetings fellow craftsworker! A cavern in the nearby frost mountains
+    beckons me with its mysterious depths and untold goods for my new invention!
+    Alas, creatures of the dark lurk in the shadows, thwarting my progress! I beg,
+    please craft a potion of night vision to fend off the darkness! As a side, please
+    make sure the potion warms me, for the cold pierces even the thickest fur!
   rewards:
   - {fileID: 11400000, guid: 6da64aa3effd9a444aa60ddaeb2515b3, type: 2}
   deliverables:
-  - {fileID: 11400000, guid: 21f24161b087cf9429cdf5207a7e0232, type: 2}
-  payout: 1000
+  - {fileID: 11400000, guid: ccb1091fe048b57439a4b6fe24290448, type: 2}
+  payout: 5000

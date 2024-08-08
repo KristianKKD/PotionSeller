@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb92f217cd7e8bc43badfdcac6d80858, type: 3}
+  m_Name: PotionDisplay
+  m_EditorClassIdentifier: 
+  title: Potion Display
+  text: Sitting on the <color="purple">desk<color="white"> will be two books, one
+    of these will display information of the current potion you are working on! This
+    is the <color="yellow">potion display book<color="white">. This will show the
+    current potion properties on the left page, with the current recipe of ingredients
+    on the right.<br><br>A property is like a variable, which is a value with a given
+    name (e.g., x = 1). Variables help us easily track or modify values, without
+    modifying our code. In our case, the fire x2 property describes the fire variable
+    as fire = 2.
+  size: 0.8
+  prompt: {fileID: 11400000, guid: 9c69a427ee241db48a06db519ae9e6b0, type: 2}
+  nextPromptType: 1

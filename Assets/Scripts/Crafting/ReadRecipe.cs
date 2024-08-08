@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 
 public class ReadRecipe : MonoBehaviour {
 
@@ -39,22 +38,54 @@ public class ReadRecipe : MonoBehaviour {
             cell.loopArrow.SetActive(false);
             cell.loopText.text = "";
             cell.dotdot.SetActive(false);
+            cell.continueArrow.SetActive(false);
         }
     }
 
     void Read(Potion pot, int potStepStartIndex, int currentX, int currentY) { //if there are > 1 conditions, the branches will smash
+        int sameStep = 1;
+        Step lastStep = null;
+        PageCell lastCell = null;
         for (int stepIndex = potStepStartIndex; stepIndex < pot.recommendedSteps.Count; stepIndex++) {
             Step s = pot.currentSteps[stepIndex];
+            if (lastStep != null && lastStep == s)
+                sameStep += 1;
+            else
+                sameStep = 1;
 
-            if (currentY + 1 > yDim)
-                return; //TODO
+            lastStep = s;
 
+            bool wasContinued = false;
+            if (currentX > xDim && currentY > yDim) {
+                Debug.Log("Maxed out potion");
+                lastCell.dotdot.SetActive(true);
+                return;
+            } else if (currentY + 1 > yDim) {
+                currentX += 1;
+                currentY = 0;
+                wasContinued = true;
+            }
+            
+            if (sameStep > 1) {
+                if (stepIndex + 1 == pot.recommendedSteps.Count) //last cell
+                    lastCell.forwardArrow.SetActive(false);
+
+                lastCell.loopArrow.SetActive(true);
+                lastCell.loopText.gameObject.SetActive(true);
+                lastCell.loopText.text = "x" + sameStep.ToString();
+                continue;
+            }
+            
             PageCell cell = myPage.transform.GetChild(currentX + currentY++ * xDim).GetComponent<PageCell>();
             cell.text.text = s.text;
+
             if (stepIndex + 1 < pot.recommendedSteps.Count && currentY < yDim)
                 cell.forwardArrow.SetActive(true);
-            else if (currentY + 1 > yDim)
-                cell.dotdot.SetActive(true);
+            if (wasContinued)
+                cell.continueArrow.SetActive(true);
+            
+
+            lastCell = cell;
 
             if (s.type == StepType.Condition) {
                 Read(pot, stepIndex + 1, currentX, currentY); //left side of the condition

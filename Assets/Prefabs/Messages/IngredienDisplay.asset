@@ -15,10 +15,11 @@ MonoBehaviour:
   title: Ingredient Display
   text: Now that you've added an <color="yellow">ingredient<color="white"> to the
     <color="orange">cauldron<color="white">, you may have noticed the floating board
-    above your <color="green">desk<color="white"> displaying information about <color="yellow">ingredients<color="white">.
-    <br><br>This board will display all added properties to your potions! <br><br>Properties
-    are important as quests will track what your potion contains as they amount to
-    the logic of your application!
-  size: 0.85
+    above your <color="purple">desk<color="white"> displaying information about <color="yellow">ingredients<color="white">.
+    The <color="purple">desk<color="white"> can be found to the right of this message.
+    <br><br>This ingredient board will display all added properties to your potions!
+    <br><br>Properties are important as quests will track what your potion contains,
+    which amounts to the logic of your application!
+  size: 0.78
   prompt: {fileID: 11400000, guid: 9c69a427ee241db48a06db519ae9e6b0, type: 2}
   nextPromptType: 1

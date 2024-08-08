@@ -19,8 +19,10 @@ public class References : MonoBehaviour {
 
     public GameObject templateIngredientPrefab;
     public GameObject questPagePrefab;
+    public GameObject potionPrefab;
 
     public Transform itemSpawnParent;
+    public Transform respawnPotionParent;
 
     public Step bottle;
     public Property elemental;
