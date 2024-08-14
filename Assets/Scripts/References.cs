@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class References : MonoBehaviour {
 
@@ -16,6 +17,8 @@ public class References : MonoBehaviour {
     public MessageManager mm;
     public PotionPage pp;
     public ShopBook sb;
+    public ReadRecipe rp;
+    public XRInteractionManager xrc;
 
     public GameObject templateIngredientPrefab;
     public GameObject questPagePrefab;

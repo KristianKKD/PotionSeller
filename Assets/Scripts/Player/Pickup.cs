@@ -16,15 +16,11 @@ public class Pickup : MonoBehaviour {
     public bool rotating = false;
 
     public Transform vecStartPos;
-
-    public XRRayInteractor right;
+    public bool vrMode = true;
 
     void Update() {
-        if (right != null && right.gameObject.activeInHierarchy) {
-            if (right.TryGetCurrent3DRaycastHit(out RaycastHit hit)) {
-                Debug.Log("Ray Interactor is hitting: " + hit.collider.gameObject.name);
-            }
-        }
+        if (vrMode)
+            return;
 
         if (Input.GetMouseButtonDown(1)) {
             RaycastHit hit;
@@ -69,16 +65,18 @@ public class Pickup : MonoBehaviour {
         previousPosition = heldObject.transform.position;
     }
 
-    void Drop() {
+    public void Drop() {
         if (heldObject == null)
             return;
 
-        ToggleCollision(true);
+        if (!vrMode) {
+            ToggleCollision(true);
 
-        Rigidbody rb = heldObject.GetComponent<Rigidbody>();
-        heldObject.GetComponent<Collider>().enabled = true;
-        rb.isKinematic = false;
-        rb.velocity += heldVelocity * followSpeed;
+            Rigidbody rb = heldObject.GetComponent<Rigidbody>();
+            heldObject.GetComponent<Collider>().enabled = true;
+            rb.isKinematic = false;
+            rb.velocity += heldVelocity * followSpeed;
+        }
 
         GolemBase golem = heldObject.GetComponent<GolemBase>();
         if (golem != null)
@@ -87,12 +85,17 @@ public class Pickup : MonoBehaviour {
         heldObject = null;
     }
 
-    public void Grab(Rigidbody objRB) {
+    public void Grab(Rigidbody objRB, SelectEnterEventArgs args = null) {
+        Debug.Log("Grabbed " + objRB.gameObject.name);
         heldObject = objRB.gameObject;
-        objRB.isKinematic = true;
-        objRB.gameObject.GetComponent<Collider>().enabled = false;
 
-        ToggleCollision(false);
+        if (!vrMode) {
+            objRB.isKinematic = true;
+            objRB.gameObject.GetComponent<Collider>().enabled = false;
+
+            ToggleCollision(false);
+        } else
+            References.r.xrc.SelectEnter(args.interactorObject, heldObject.GetComponent<XRGrabInteractable>());
 
         if (References.r.qm.deliveredItems.Contains(heldObject))
             References.r.qm.RemoveDelivery(heldObject);

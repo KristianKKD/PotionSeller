@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Introduction
   m_EditorClassIdentifier: 
   title: Introduction
-  text: Welcome to <color="yellow">[GAME TITLE]<color="white">!<br>This text box
+  text: Welcome to <color="yellow">Potion Seller<color="white">!<br>This text box
     will provide essential tips and instructions to help you learn programming. Let's
     get started!
   size: 1.3

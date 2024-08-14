@@ -15,7 +15,8 @@ MonoBehaviour:
   title: Controls
   text: <color="yellow">VR:<color="white"><br>Left/Right Trigger = Interact<br>Left/Right
     Grip = Pickup<br>Left Stick = Move<br>Right Stick = Quick turn<br><br><color="orange">PC<color="white"><br>LMB
-    = Interact/Rotate while picked up<br>RMB = Pickup<br>WASD = Move
+    = Interact/Rotate while picked up<br>RMB = Pickup/Take from shelves<br>WASD =
+    Move
   size: 0.75
   prompt: {fileID: 11400000, guid: 9c69a427ee241db48a06db519ae9e6b0, type: 2}
   nextPromptType: 1

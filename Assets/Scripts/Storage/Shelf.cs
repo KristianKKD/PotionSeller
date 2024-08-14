@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Shelf : MonoBehaviour {
 
@@ -19,7 +20,7 @@ public class Shelf : MonoBehaviour {
         }
     }
 
-    public void Interact(bool isPlayer = true) {
+    public void Interact(bool isPlayer = true, SelectEnterEventArgs args = null) {
         if (ingredient == null || quantityHeld <= 0)
             return;
         
@@ -32,7 +33,7 @@ public class Shelf : MonoBehaviour {
             go.GetComponent<Ingredient>().ingredientStep = ingredient; //temp (ingredients should have their own prefabs each)
             go.GetComponent<Renderer>().material.color = ingredient.colourMix;
 
-            References.r.p.Grab(go.GetComponent<Rigidbody>());
+            References.r.p.Grab(go.GetComponent<Rigidbody>(), args);
             References.r.id.UpdateDisplay(ingredient);
         }
     }

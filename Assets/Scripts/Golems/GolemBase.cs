@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class GolemBase : MonoBehaviour {
 
-
     public enum State {
         Idle,
         Ingredient,
@@ -150,8 +149,8 @@ public class GolemBase : MonoBehaviour {
             agent.enabled = true;
             rb.isKinematic = true;
             GiveTask(r);
+            Instantiate(References.r.rp.gameObject, References.r.respawnPotionParent);
         } else if (!grounded) {
-            Debug.Log("test");
             agent.enabled = true;
             rb.isKinematic = true;
             grounded = true;

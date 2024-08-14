@@ -37,7 +37,7 @@ public class QuestPage : MonoBehaviour {
 
         rewards.text = "";
         for (int i = 0; i < q.rewards.Count; i++)
-            rewards.text += q.rewards[i].name + "\n";
+            rewards.text += "-" + q.rewards[i].rewardText + "\n";
 
         payout.text = "$" + q.payout.ToString();
 

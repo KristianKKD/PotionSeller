@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9b5cebaffc3b74ba9d9df013f8d54c, type: 3}
   m_Name: ShelfOfIceCrystal
   m_EditorClassIdentifier: 
-  rewardText: 
+  rewardText: Shelf of Ice Crystals
   rewardType: 0
   itemPayout: {fileID: 11400000, guid: daeb3b321ef037649abd153ee03477ee, type: 2}
   itmeQuantity: 10

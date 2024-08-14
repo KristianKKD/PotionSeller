@@ -57,6 +57,7 @@ public class Mixing : MonoBehaviour {
             foreach (Step s in prefab.currentSteps)
                 AddToMix(s);
             Destroy(other.gameObject);
+            Instantiate(References.r.potionPrefab, References.r.respawnPotionParent);
         }
     }
 }
