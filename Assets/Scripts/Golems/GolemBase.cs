@@ -70,9 +70,11 @@ public class GolemBase : MonoBehaviour {
 
         } else if (stateTarget == State.ExportingPotion) {
             Potion p = target.GetComponent<Potion>();
-            if (p != null)
-                p.Copy(myRecipe.savedPotion);
-
+            if (p != null) {
+                foreach (Step s in myRecipe.savedPotion.currentSteps)
+                    p.AddStep(s);
+                //p.Copy(myRecipe.savedPotion);
+            }
             recipeIndex = 0;
             stateTarget = State.Idle;
         } else {
@@ -98,7 +100,7 @@ public class GolemBase : MonoBehaviour {
             return;
 
         myRecipe = r;
-        r.gameObject.SetActive(false);
+        //r.gameObject.SetActive(false);
         stateTarget = State.Idle;
 
         recipeIndex = 0;
@@ -138,7 +140,7 @@ public class GolemBase : MonoBehaviour {
 
     private IEnumerator Pause() {
         isPaused = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         isPaused = false;
     }
 

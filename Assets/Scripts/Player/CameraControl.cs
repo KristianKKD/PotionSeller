@@ -10,7 +10,7 @@ public class HeadRotate : MonoBehaviour {
     public float camSmooth = 0.2F;
 
     float vertRot = 0f;
-    float horiRot = 0f;
+    float horiRot = -90f;
 
     float oldVertRot;
 

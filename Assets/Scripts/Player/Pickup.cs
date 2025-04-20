@@ -16,7 +16,7 @@ public class Pickup : MonoBehaviour {
     public bool rotating = false;
 
     public Transform vecStartPos;
-    public bool vrMode = true;
+    public bool vrMode = false;
 
     void Update() {
         if (vrMode)

@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb92f217cd7e8bc43badfdcac6d80858, type: 3}
-  m_Name: Controls
+  m_Name: OLD_Controls
   m_EditorClassIdentifier: 
   title: Controls
-  text: <color="orange">PC<color="white"><br>LMB = Interact/Rotate while picked up<br>RMB
-    = Pickup/Take from shelves<br>WASD = Move
+  text: <color="yellow">VR:<color="white"><br>Left/Right Trigger = Interact<br>Left/Right
+    Grip = Pickup<br>Left Stick = Move<br>Right Stick = Quick turn<br><br><color="orange">PC<color="white"><br>LMB
+    = Interact/Rotate while picked up<br>RMB = Pickup/Take from shelves<br>WASD =
+    Move
   size: 0.75
   prompt: {fileID: 11400000, guid: 9c69a427ee241db48a06db519ae9e6b0, type: 2}
   nextPromptType: 1

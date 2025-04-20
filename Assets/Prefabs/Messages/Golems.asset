@@ -17,7 +17,7 @@ MonoBehaviour:
     book<color="white">. A golem will take a recipe and repeat it indefinitely or
     until it runs out of resources to do so. <br>This can be imaged as: LOOP INFINITE:<br>          
     IF CAN:<br>               DO RECIPE<br>           ELSE:<br>               END
-    PROGRAM'
-  size: 0.8
+    PROGRAM<br><br>That''s the end of the demo! Feel free to replay the quests!'
+  size: 0.78
   prompt: {fileID: 0}
   nextPromptType: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb92f217cd7e8bc43badfdcac6d80858, type: 3}
   m_Name: CauldronPrompt
   m_EditorClassIdentifier: 
-  title: Try dragging and dropping (pickup and release) an <color="yellow">ingredient<color="white">
+  title: Try dragging and dropping (right mouse button) an <color="yellow">ingredient<color="white">
     from a <color="blue">shelf<color="white"> into the <color="orange">cauldron<color="white">.
   text: Well done!<br>Press the <color="orange">><color="white"> button to progress!
   size: 0.8

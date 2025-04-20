@@ -155,4 +155,5 @@ public class QuestManager : MonoBehaviour {
 
         currentActive.Remove(q);
     }
+
 }

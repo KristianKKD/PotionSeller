@@ -1728,7 +1728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1008246235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6392,7 +6392,7 @@ MonoBehaviour:
   followSpeed: 70
   rotating: 0
   vecStartPos: {fileID: 4249874621857147763}
-  vrMode: 1
+  vrMode: 0
 --- !u!4 &4640026247050606836
 Transform:
   m_ObjectHideFlags: 0
@@ -7562,7 +7562,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6191357731624198103
 Transform:
   m_ObjectHideFlags: 0
@@ -8289,7 +8289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &7148885342540908764
 GameObject:
   m_ObjectHideFlags: 0
